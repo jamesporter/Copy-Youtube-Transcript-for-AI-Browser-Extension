@@ -65,8 +65,15 @@ async function automatedTranscriptCopy() {
     const segments = document.querySelectorAll(
       "ytd-transcript-segment-renderer yt-formatted-string",
     );
-    if (segments.length > 0) {
-      const text = Array.from(segments)
+
+    const backup = document.querySelectorAll(
+      ".style-scope ytd-macro-markers-list-renderer",
+    );
+
+    const items = segments.length > 0 ? segments : backup;
+
+    if (items.length > 0) {
+      const text = Array.from(items)
         .map((s) => s.innerText)
         .join("\n");
 
