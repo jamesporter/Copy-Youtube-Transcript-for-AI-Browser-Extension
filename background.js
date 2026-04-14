@@ -70,7 +70,9 @@ async function automatedTranscriptCopy() {
       ".style-scope ytd-macro-markers-list-renderer",
     );
 
-    const items = segments.length > 0 ? segments : backup;
+    const backup2 = document.querySelectorAll('yt-item-section-renderer');
+
+    const items = segments.length > 0 ? segments : backup.length > 0 ? backup : backup2;
 
     if (items.length > 0) {
       const text = Array.from(items)
